@@ -6,7 +6,7 @@ This is meant to be a basic reference for concepts, and then applying a more com
 
 I will continue to add, and improve each section and please submit what you believe should be added or changed. 
 
-The goal is to make a really good quick reference collection!
+The goal is to make a really good and quick reference collection!
 
 MOST USED CASES AND SHORT. 
 
