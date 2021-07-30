@@ -2,14 +2,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using static Switch_Expression_Statements.SwitchExample;
 
 namespace Switch_Expression_Statements
 {
     //Switch Statements - https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/switch
+    //Switch Expression - https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/switch-expression
+
+
+    //Switch Expression
+    public static class SwitchExample
+    {
+        //Enum-
+        //An enumeration type (or enum type) is a value type defined by a set of
+        //named constants of the underlying integral numeric type
+        //By default, the associated constant values of enum members are of type int;
+        //they start with zero and increase by one following the definition text order
+        public enum Direction
+        {
+            Up,
+            Down,
+            Right,
+            Left
+        }
+
+        public enum Orientation
+        {
+            North,
+            South,
+            East,
+            West
+        }
+        //Return Orientation based on direction
+        public static Orientation ToOrientation(Direction direction) => direction switch
+        {
+            Direction.Up => Orientation.North,
+            Direction.Right => Orientation.East,
+            Direction.Down => Orientation.South,
+            Direction.Left => Orientation.West,
+            _ => throw new ArgumentOutOfRangeException(nameof(direction), $"Not expected direction value: {direction}"),
+        };
+    }
     class Program
     {
         static void Main(string[] args)
         {
+            //Switch Expression
+            var direction = Direction.Right;
+            Console.WriteLine($"Map view direction is {direction}");
+            Console.WriteLine($"Cardinal orientation is {ToOrientation(direction)}");
+
+
+            //Switch Statement
             int caseSwitch = 1;
             //Each case statement defines a pattern that,
             //if it matches the match expression, causes its containing switch section to be executed.

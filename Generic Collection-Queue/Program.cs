@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace Generic_Collection_Queue
 {
+    //Queue
+    //FIFO
     class Order
     {
         //Properties
@@ -12,12 +14,11 @@ namespace Generic_Collection_Queue
         //Constructor
         public Order(int id, int orderQuantity)
         {
-            this.OrderId = id;
-            this.OrderQuantity = orderQuantity;
+            OrderId = id;
+            OrderQuantity = orderQuantity;
         }
 
         //Print order was processed
-        
         public void ProcessOrder()
         {
             //Print the OrderId of the object it's invoked on
@@ -55,11 +56,11 @@ namespace Generic_Collection_Queue
             //Queue<T>---
 
             //Good for processing requests
-            //FIFO
 
             //Big O = O(n) contains/search O(1) add/queue/dequeue
 
-            //Enqueue = add to back of line, Dequeue = return and delete top of stack(first person in line), Peek = Return first in line object but not remove
+            //Enqueue = add to back of line, Dequeue = return and delete top of stack(first person in line),
+            //Peek = Return first in line object but not remove
 
             //Make queue
             Queue<string> queue = new Queue<string>();
