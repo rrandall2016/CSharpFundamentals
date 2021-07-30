@@ -35,7 +35,7 @@ namespace Records
     class Program
     {
         //Records
-        //Immutability
+        //Immutability if no set
         //Data and statistics are among the scenarios where you'll want to use records.
         //Is a reference type
         //
