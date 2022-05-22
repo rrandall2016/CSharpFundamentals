@@ -5,12 +5,16 @@ namespace Polymorphism
 {
     //Polymorphism-
     //Derived classes have same method as the base class, but since we use virtual keyword the computer will figure out which one to use
-    //Derived classes with virtual method must use OVERRIDE keyword
+    //Derived classes with VIRTUAL method must use OVERRIDE keyword
 
     //Abstract classes-
     //if you have an abstract class with a property in it and 3 classes inheriting from it,
     //you write the property once in the abstract and the three children get it
+
     //With interfaces you have to write the properties
+
+    //The purpose of an abstract class is primarily to provide an appropriate base class from which other classes can inherit,
+    //and thus share a common design
     public abstract class PlayerStats
     {
         public int Health { get; set; }
@@ -34,7 +38,7 @@ namespace Polymorphism
         {
             PokemonList = new List<BaseClass>();
             this.Name = name;
-            Health = 100;
+            Health = 100;//Listed in abstract class 
         }
         public void AddPokemonToList(BaseClass pokemon)
         {
@@ -56,6 +60,8 @@ namespace Polymorphism
         public int Attack { get; set; }
         public int Defense { get; set; }
         public int Speed { get; set; }
+
+        //protected means only inherited classes can do 
 
         protected string[] Weaknesses = new string[3] { "Water", "Ground", "Rock" };
         public string Category { get; set; }

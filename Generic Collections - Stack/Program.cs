@@ -1,10 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Generic_Collections___Stack
 {
     class Program
     {
+        //Stack for valid parentheses
+        Dictionary<char,char> map = new()
+        {
+            {'(',')'},
+            {'{','}'},
+            {'[',']'}
+        };
+        Stack<char> stack2 = new();
+        public bool IsValid(string s)
+        {
+            //Check each char in string, if it's key it is open parentheses and push to stack
+            foreach (var c in s.ToCharArray())
+            {
+                if (map.ContainsKey(c))
+                {
+                    stack2.Push(c);
+                }
+                else
+                {
+                    //Is stack empty then false
+                    if (stack2.Count == 0)
+                    {
+                        return false;
+                    }
+                    //Pop the stack and check if value matches to key if not, return false
+                    char open = stack2.Pop();
+                    if (map[open] != c)
+                    {
+                        return false;
+                    }
+                }
+            }
+            //If stack is empty, all parentheses matched
+            return stack2.Count == 0;
+        }
         static void Main(string[] args)
         {
             //Stack<T>
@@ -45,6 +81,11 @@ namespace Generic_Collections___Stack
             {
                 Console.WriteLine(myStack.Pop() + " ");
             }
+            Console.WriteLine("-----------------");
+
+            Program testing = new();
+            Console.WriteLine(testing.IsValid("{(())}"));
+
 
         }
     }

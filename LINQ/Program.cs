@@ -11,8 +11,7 @@ namespace LINQ
 
         //Works with inMemory and DB
         //All LINQ queries work on IEnumberable<T>
-        
-        //IEnumberable = 
+
 
         //IEnumberable<T> = Exposes the enumerator,
         //which supports a simple iteration over a collection of a specified type.
@@ -27,10 +26,23 @@ namespace LINQ
         //Other Examples
         //https://linqsamples.com/linq-to-objects/ordering/OrderBy-numbers
 
+        public static List<int> test(List<int> nums)
+        {
+            IEnumerable<int> e = nums.Select(x => 5 * (x + 2));
+            return e.ToList();
+        }
 
 
         static void Main(string[] args)
         {
+            //Create a new list from a given list of integers where each integer value is added to 2
+            //and the result value is multiplied by 5
+            List<int> mylist = test(new List<int>(new int[] { 1, 2, 3, 4 }));
+            foreach (var i in mylist)
+            {
+                Console.Write(i.ToString() + " ");
+            }
+
             //Find numbers divisible by 2 and greater than 0      
             int[] numbers = { 0, 1, -2, 2,-3, 3, 4, 5, 6, 7, 8, 9 };
             Console.WriteLine("Example 1 print numbers in array divisable by 2");
@@ -153,7 +165,19 @@ namespace LINQ
                 orderby city
                 select city;
 
+            //LINQ
+            string[] concatTest = { "Testing ", "Many different ", "strings ", "to " };
+            string[] concatTest2 = { "concat ", "with ", "as arrays" };
+            var concatResult = concatTest.Concat(concatTest2);
+            foreach (var word in concatResult)
+            {
+                Console.Write(word);
+            };
+            Console.WriteLine();
+
+
         }
+
 
 
     }

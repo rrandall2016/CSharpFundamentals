@@ -10,7 +10,7 @@ namespace TypeCasting
             {
 
             }
-        }        
+        }
         public class Derived : Base
         {
             public Derived()
@@ -30,6 +30,21 @@ namespace TypeCasting
             string stringToNumber = "777";
             int number = int.Parse(stringToNumber);
 
+            Console.WriteLine("Enter username:");
+            string userName = Console.ReadLine();
+
+            int userName2Int = int.Parse(userName);
+
+            Console.WriteLine(123 + userName2Int);
+
+            //Convert to int from double
+            double val = 21.34;
+            int res = Convert.ToInt32(val);
+            int res2 = (int)val;
+            Console.WriteLine("Converted double {0} to integer {1} ", val, res);
+            Console.WriteLine(res2);
+
+
 
             //For reference types
             //you can from child to parent, but not parent to child
@@ -43,7 +58,7 @@ namespace TypeCasting
             // to derived type. Note: This will compile but will
             // throw an exception at run time if the right-side
             // object is not in fact a child of base.
-            Derived d2= (Derived)b;
+            Derived d2 = (Derived)b;
 
 
             //Need to provide manual casting when losing information (truncated)
@@ -52,8 +67,7 @@ namespace TypeCasting
             //Manually casting here 
             a = (int)x;
 
-
-
+            //Look up TryParse
 
         }
     }

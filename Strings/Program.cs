@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 
 namespace Strings
 {
@@ -7,12 +8,15 @@ namespace Strings
     {
         static void Main(string[] args)
         {
-            //Strings
-            //Visit Time Corey String Manipluation Techniques
-            https://www.youtube.com/watch?v=ioi__WRETk4&ab_channel=IAmTimCorey
+        //string is an object of type string
+        //For escaped characters use verbatim strings like @"C:\folder\subfolder\file.txt
+        //Strings
+        //Visit Time Corey String Manipluation Techniques
+        https://www.youtube.com/watch?v=ioi__WRETk4&ab_channel=IAmTimCorey
 
             //Does string contain
             string example = "x@yahoo.com";
+           
             Console.WriteLine($"Does string contain yahoo.com?: {example.Contains("yahoo.com")}");
 
             //All string to uppercase, lowercase
@@ -65,6 +69,18 @@ namespace Strings
 
             //Multi-D Array of strings
             string[,] array2Db = new string[3, 2] { { "one", "two" }, { "three", "four" }, { "five", "six" } };
+
+            //StringBuilder to prevent making new string objects over and over
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.AppendLine("Employee List");
+            stringBuilder.AppendLine("Kim");
+            stringBuilder.AppendLine("Koga");
+            stringBuilder.AppendLine("Indy");
+            stringBuilder.AppendLine("Luna");
+            string list = stringBuilder.ToString();
+            Console.WriteLine(list);
+
 
 
         }

@@ -37,17 +37,58 @@ namespace Events
         }
 
     }
+    public class DoorEventArgs : EventArgs
+    {
+        public bool IsOpen { get; set; }
+    }
+
+    public class Door
+    {
+        public event EventHandler<DoorEventArgs> DoorUsed;
+        private bool isOpen = false;
+
+        public Door()
+        {
+        }
+
+        public void UseDoor()
+        {
+            isOpen = !isOpen;
+
+            DoorEventArgs args = new DoorEventArgs
+            {
+                IsOpen = isOpen
+            };
+
+            DoorUsed?.Invoke(this, args);
+        }
+
+
+    }
+
     class Program
     {
         public static void bl_ProcessCompleted(object sender, EventArgs e)
         {
             Console.WriteLine("Process Completed!");
         }
+        private static void OnDoorUsed(object sender, DoorEventArgs doorArgs)
+        {
+            Console.WriteLine($"Door open? {doorArgs.IsOpen}");
+        }
         static void Main(string[] args)
         {
             ProcessBusinessLogic bl = new ProcessBusinessLogic();
             bl.ProcessCompleted += bl_ProcessCompleted; // register with an event
             bl.StartProcess();
+
+            //Door
+            Door d = new Door();
+            d.DoorUsed += OnDoorUsed;
+
+            d.UseDoor();
+            d.UseDoor();
+            d.UseDoor();
         }
     }
 }

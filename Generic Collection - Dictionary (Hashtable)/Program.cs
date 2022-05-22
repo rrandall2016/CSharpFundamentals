@@ -97,6 +97,22 @@ namespace Generic_Collection___Dictionary__Hashtable_
                     Console.WriteLine(item.Key);
                 
             }
+
+            employeesSorted.Remove("HR");
+
+            foreach (var item in employeesSorted)
+            {
+
+                Console.WriteLine(item.Key);
+
+            }
+
+            Dictionary<string, int> RomanToInt = new()
+            {
+                {"M", 1000},
+                { "CM", 900 },
+            };
+
         }
 
        

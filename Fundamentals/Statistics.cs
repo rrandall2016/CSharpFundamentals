@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,6 +61,5 @@ namespace Fundamentals
             Low = Math.Min(number, Low);
             High = Math.Max(number, High);
         }
-
     }
 }

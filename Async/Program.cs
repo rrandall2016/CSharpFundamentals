@@ -56,6 +56,5 @@ namespace Async
             Console.WriteLine(" File reading is completed");
             return length;
         }
-
     }
 }

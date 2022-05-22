@@ -11,13 +11,30 @@ namespace Inheritance_Encapsulation_Properties
 
     //Properties-
     //Use properties for that class to get or set the variable without other classes doing that(adds protection)
-    //You learned from the previous chapter that private variables can only be accessed within the same class (an outside class has no access to it).
+    //Private variables can only be accessed within the same class (an outside class has no access to it).
     //However, sometimes we need to access them - and it can be done with properties.
 
     //Encapsulation-
     //*declare fields/variables as private
     //*provide public get and set methods, through properties, to access and update the value of a private field
 
+    //Part 1
+    class Parent
+    {
+        public void ParentMethod()
+        {
+            Console.WriteLine("this is parent method");
+        }
+    }
+    class child : Parent
+    {
+        public void childmethod()
+        {
+            Console.WriteLine("this is child method");
+        }
+
+    }
+    //Part 2 
     public class Stats
     {
         public string[] PokemonType { get; set; }
@@ -43,9 +60,9 @@ namespace Inheritance_Encapsulation_Properties
             }
         }
     }
-    class BaseClass : Stats
+    class ChildClassZero : Stats
     {
-        public BaseClass()
+        public ChildClassZero()
         {
             PokemonType = new string[]{"Fire"};
             Category = "Lizard";
@@ -59,7 +76,7 @@ namespace Inheritance_Encapsulation_Properties
             Console.WriteLine("Attacking with flare");
         }
     }
-    class ChildClassOne : BaseClass
+    class ChildClassOne : ChildClassZero
     {
         public ChildClassOne()
         {
@@ -95,12 +112,43 @@ namespace Inheritance_Encapsulation_Properties
     {
         static void Main(string[] args)
         {
-            var Charmander = new BaseClass();
+            //Rule 1
+            //If inherited, the execution of any child class starts by invoking its parent class's default constructor by default.
+            child obj = new child();
+            obj.childmethod();
+            obj.ParentMethod();
+            
+
+            //Rule 2
+            //In inheritance the child class can access its parent class's members but a parent class can never access its child class member.
+            Parent p = new Parent();
+            p.ParentMethod();//valid  
+            //p.childmethod();//invalid 
+
+            //Rule 3
+            //In the same way an object of a class can also be assigned to its parent class variable and make it as a reference,
+            //but in this scenario we are also using the parent reference.
+            //We cannot access only a member that is purely defind in the child class even if the reference is consuming the same object memory.
+            child obj2 = new child();
+            Parent p2 = obj2;
+            p2.ParentMethod();//access only the parent member.  
+            //p2.childmethod();//invalid cannot access child member 
+
+            //Rule 4: Each and every class we define in .Net languages has an implicit parent class (in other words, the class object) defined in the system namespace.
+            //So the members of this class as in the following: Equals, GetHashCode, GetType,ToString
+
+            // A Derived Class’s Constructor Must Call Its Base Class’s Constructor
+
+
+
+            var Charmander = new ChildClassZero();
             Charmander.WeaknessPrint();
             Charmander.PokemonTypePrint();
+            Console.WriteLine(Charmander.Hp);
 
             var Charmeleon = new ChildClassOne();
             Charmeleon.RagingFlames();
+            Charmeleon.WeaknessPrint();
 
             var Charizard = new ChildClassTwo();
             Charizard.MaxWildfire();

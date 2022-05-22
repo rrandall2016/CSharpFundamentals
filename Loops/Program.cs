@@ -5,6 +5,7 @@ namespace Loops
 {
     class Program
     {
+        //C# provides the conditional operator (?:) that can be used in place of an if…else statement.
         static void Main(string[] args)
         {
             //While loop
